@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>StudentExam</title>
+    <link rel="stylesheet" th:href="@{'/css/bootstrap.css'}">
+    <script type="text/javascript"  th:src="@{'/js/bootstrap.bundle.js'}" ></script>
+</head>
+<body>
+<head th:insert="head.html"></head>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Surname</th>
+        <th scope="col">Exam</th>
+        <th scope="col">Mark</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="stu:${students}">
+        <div th:if="${stu.getExam()<50}"  >
+        <th  scope="row" th:text="${stu.getId()}" style="color: red"></th>
+        <td th:text="${stu.getName()}" style="color: red"></td>
+        <td th:text="${stu.getSurname()}" style="color: red"></td>
+        <td th:text="${stu.getExam()}" style="color: red"></td>
+        <td th:text="${stu.getMark()}" style="color: red"></td>
+        </div>
+        <div th:if="${stu.getExam()>=50}"  >
+        <th   scope="row" th:text="${stu.getId()}"></th>
+        <td th:text="${stu.getName()}"></td>
+        <td th:text="${stu.getSurname()}"></td>
+        <td th:text="${stu.getExam()}"></td>
+        <td th:text="${stu.getMark()}"></td>
+        </div>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
